@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 const  Orders= () => {
 
-    const [orders,setorders] = useState([
+    const [orders] = useState([
         {title:"Poverty in Africa", details: 'lorem ipsum ...', author: 'Safya Mukenyi', id: 1, subject:"Business"},
         {title:"How to cook", details: 'lorem ipsum ...', author: 'Sanaa Muriithi', id: 2, subject:"Maths"},
         {title:"American politics", details: 'lorem ipsum ...', author: 'shiku', id: 3, subject:"Nursing"},
