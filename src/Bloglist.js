@@ -1,6 +1,6 @@
 
 //using props to pass variable to components.
-const Bloglist = ({blogs, title, handleDelete}) => {
+const Bloglist = ({blogs, title}) => {
 
     return ( 
         <div className="allblogs">
@@ -12,7 +12,7 @@ const Bloglist = ({blogs, title, handleDelete}) => {
                 <h1>{title}</h1>
                 <h2>{blog.title}</h2>
                 <p>Written by {blog.author}</p>
-                <button onClick={()=>handleDelete(blog.id)}>Delete blog</button>
+                
             </div>
         )}
 </div>
