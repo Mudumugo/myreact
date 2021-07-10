@@ -5,33 +5,35 @@ import Bloglist from './Bloglist';
 
 const Home = () => {
 
+  const [isPending, setIsPending]=useState(true);
   const [blogs, setBlogs] = useState(null);
     
 
-    const [name, setName] = useState("Mario");
+    
 
-    const handleDelete = (id)=>{
-    const newBlogs = blogs.filter(blog =>blog.id !== id);
-    setBlogs(newBlogs);
-    }
+    
 
     //useEffect hook runs after every render. can be used to fetch and update var.
       useEffect(()=>{
         fetch('http://localhost:8000/blogs')
         .then(res=>{
-          res.json();
+          return res.json();
         })
         .then(data=>{
+          // can use console.log to check if the data is being rendered in the console
           console.log(data);
-          setBlogs(data)
+          setBlogs(data);
+          setIsPending(false);
+          
         })
       },[]);
 
     return ( 
         <div>
-      {blogs && <Bloglist blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>}
-        <button onClick={()=>setName('luigi')}>Change name</button>
-        <p>{name}</p>
+          {isPending && <div>Loading.....</div>}
+      {blogs && <Bloglist blogs={blogs} title="All Blogs!"/>}
+        {/* <button onClick={()=>setName('luigi')}>Change name</button> */}
+       
         <Orders/>
         </div>
      );
