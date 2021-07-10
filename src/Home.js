@@ -7,6 +7,7 @@ const Home = () => {
 
   const [isPending, setIsPending]=useState(true);
   const [blogs, setBlogs] = useState(null);
+  const [error, setError] = useState(null);
     
 
     
@@ -17,6 +18,10 @@ const Home = () => {
       useEffect(()=>{
         fetch('http://localhost:8000/blogs')
         .then(res=>{
+          
+          if(!res.ok){
+            throw Error('could not fetch the data from that resource')
+          }
           return res.json();
         })
         .then(data=>{
@@ -24,12 +29,16 @@ const Home = () => {
           console.log(data);
           setBlogs(data);
           setIsPending(false);
-          
+          setError(null);
+        })
+        .catch(err =>{
+          setError(err.message)
         })
       },[]);
 
     return ( 
         <div>
+          {error && <div>{error}</div>}
           {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs} title="All Blogs!"/>}
         {/* <button onClick={()=>setName('luigi')}>Change name</button> */}
