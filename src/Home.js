@@ -13,7 +13,7 @@ const Home = () => {
           {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs} title="All Blogs!"/>}
        
-        <Orders/>
+        {/* <Orders/> */}
         </div>
      );
 }
