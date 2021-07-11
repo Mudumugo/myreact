@@ -1,4 +1,4 @@
-import Orders from './Test Drive/Orders';
+
 import Bloglist from './Bloglist';
 import useFetch from './useFetch';
 
@@ -13,7 +13,6 @@ const Home = () => {
           {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs} title="All Blogs!"/>}
        
-        {/* <Orders/> */}
         </div>
      );
 }
